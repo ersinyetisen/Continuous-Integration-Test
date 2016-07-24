@@ -1,0 +1,42 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+  http://www.liquibase.org/xml/ns/dbchangelog-ext
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="fkarakoyunlu (generated)" id="1469021942143-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="User">
+            <column name="id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="surname" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="fkarakoyunlu (generated)" id="1469021942143-2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="hibernate_sequence">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="fkarakoyunlu (generated)" id="1469021942143-3" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="User"/>
+    </changeSet>
+
+    <changeSet author="liq-test" id="liq-example">
+		<sql dbms="mysql"
+            endDelimiter="\nGO"
+            splitStatements="true"
+            stripComments="true">insert into User (id, email, name, password, surname) values ('5', 'liq@q', 'liquibase', '', '')
+            <comment>Test comment in liquibase</comment>
+		</sql>
+		<rollback>
+        	delete from User where id='5'
+    	</rollback>
+    </changeSet>
+    
+</databaseChangeLog>
+
