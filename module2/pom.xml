@@ -6,7 +6,6 @@
     <artifactId>maven-multi-module-test</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-
   <artifactId>module2</artifactId>
 
   <dependencies>
@@ -110,60 +109,59 @@
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>javax.servlet-api</artifactId>
-		<version>3.1.0</version>
-	</dependency>
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>javax.servlet-api</artifactId>
+  		<version>3.1.0</version>
+  	</dependency>
 
-  <dependency>
-		<groupId>ch.qos.logback</groupId>
-		<artifactId>logback-classic</artifactId>
-		<version>1.1.2</version>
-		<exclusions>
-			<exclusion>
-				<artifactId>slf4j-api</artifactId>
-				<groupId>org.slf4j</groupId>
-			</exclusion>
-		</exclusions>
-	</dependency>
+    <dependency>
+  		<groupId>ch.qos.logback</groupId>
+  		<artifactId>logback-classic</artifactId>
+  		<version>1.1.2</version>
+  		<exclusions>
+  			<exclusion>
+  				<artifactId>slf4j-api</artifactId>
+  				<groupId>org.slf4j</groupId>
+  			</exclusion>
+  		</exclusions>
+  	</dependency>
 
-	<dependency>
-		<groupId>org.slf4j</groupId>
-		<artifactId>jcl-over-slf4j</artifactId>
-		<version>1.7.10</version>
-	</dependency>
+  	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>jcl-over-slf4j</artifactId>
+  		<version>1.7.10</version>
+  	</dependency>
 
-  <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-  <dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-api</artifactId>
-    <version>1.7.21</version>
-  </dependency>
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.21</version>
+    </dependency>
 
-  <!-- Liquibase dependency start -->
-  <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
-  <dependency>
-      <groupId>org.liquibase</groupId>
-      <artifactId>liquibase-core</artifactId>
-      <version>3.5.1</version>
-  </dependency>
+    <!-- Liquibase dependency start -->
+    <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+    <dependency>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-core</artifactId>
+        <version>3.5.1</version>
+    </dependency>
 
-	<!-- aşağıdaki dep hibernate 4 için ben 5 kullanıyorum -->
-	<!-- https://mvnrepository.com/artifact/org.liquibase.ext/liquibase-hibernate4 -->
-	<!-- <dependency>
-		<groupId>org.liquibase.ext</groupId>
-		<artifactId>liquibase-hibernate4</artifactId>
-		<version>3.5</version>
-	</dependency> -->
+  	<!-- aşağıdaki dep hibernate 4 için ben 5 kullanıyorum -->
+  	<!-- https://mvnrepository.com/artifact/org.liquibase.ext/liquibase-hibernate4 -->
+  	<!-- <dependency>
+  		<groupId>org.liquibase.ext</groupId>
+  		<artifactId>liquibase-hibernate4</artifactId>
+  		<version>3.5</version>
+  	</dependency> -->
 
-	<dependency>
-    	<groupId>com.github.jean-merelis</groupId>
-    	<artifactId>liquibase-hibernate5</artifactId>
-    	<version>1.0.0.Beta</version>
-	</dependency>
-  <!-- Liquibase dependency end -->
-
+  	<dependency>
+      	<groupId>com.github.jean-merelis</groupId>
+      	<artifactId>liquibase-hibernate5</artifactId>
+      	<version>1.0.0.Beta</version>
+  	</dependency>
+    <!-- Liquibase dependency end -->
   </dependencies>
 
   <properties>
@@ -178,7 +176,6 @@
 
   <build>
     <finalName>maven-multi-module-test</finalName>
-
     <!-- Plugins start -->
     <pluginManagement>
       <plugins>
@@ -210,6 +207,5 @@
       </plugins>
     </pluginManagement>
     <!-- Plugins end -->
-
   </build>
 </project>

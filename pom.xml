@@ -114,101 +114,101 @@
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>javax.servlet-api</artifactId>
-		<version>3.1.0</version>
-	</dependency>
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>javax.servlet-api</artifactId>
+  		<version>3.1.0</version>
+  	</dependency>
 
-  <dependency>
-		<groupId>ch.qos.logback</groupId>
-		<artifactId>logback-classic</artifactId>
-		<version>1.1.2</version>
-		<exclusions>
-			<exclusion>
-				<artifactId>slf4j-api</artifactId>
-				<groupId>org.slf4j</groupId>
-			</exclusion>
-		</exclusions>
-	</dependency>
+    <dependency>
+  		<groupId>ch.qos.logback</groupId>
+  		<artifactId>logback-classic</artifactId>
+  		<version>1.1.2</version>
+  		<exclusions>
+  			<exclusion>
+  				<artifactId>slf4j-api</artifactId>
+  				<groupId>org.slf4j</groupId>
+  			</exclusion>
+  		</exclusions>
+  	</dependency>
 
-	<dependency>
-		<groupId>org.slf4j</groupId>
-		<artifactId>jcl-over-slf4j</artifactId>
-		<version>1.7.10</version>
-	</dependency>
+  	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>jcl-over-slf4j</artifactId>
+  		<version>1.7.10</version>
+  	</dependency>
 
-  <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-  <dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-api</artifactId>
-    <version>1.7.21</version>
-  </dependency>
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.21</version>
+    </dependency>
 
-  <!-- Liquibase dependency start -->
-  <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
-  <dependency>
-      <groupId>org.liquibase</groupId>
-      <artifactId>liquibase-core</artifactId>
-      <version>3.5.1</version>
-  </dependency>
+    <!-- Liquibase dependency start -->
+    <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+    <dependency>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-core</artifactId>
+        <version>3.5.1</version>
+    </dependency>
 
-	<dependency>
-    	<groupId>com.github.jean-merelis</groupId>
-    	<artifactId>liquibase-hibernate5</artifactId>
-    	<version>1.0.0.Beta</version>
-	</dependency>
-  <!-- Liquibase dependency end -->
-  </dependencies>
+  	<dependency>
+      	<groupId>com.github.jean-merelis</groupId>
+      	<artifactId>liquibase-hibernate5</artifactId>
+      	<version>1.0.0.Beta</version>
+  	</dependency>
+    <!-- Liquibase dependency end -->
+    </dependencies>
 
-  <properties>
-        <changelog>parent-liquibase/master.xml</changelog>
-        <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
-        <mysql.host>mysql.dev.kartaca.com</mysql.host>
-        <mysql.port>3306</mysql.port>
-        <mysql.schema>test_furkank_citest</mysql.schema>
-        <mysql.username>furkank</mysql.username>
-        <mysql.password>1234</mysql.password>
-  </properties>
+    <properties>
+          <changelog>parent-liquibase/master.xml</changelog>
+          <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
+          <mysql.host>mysql.dev.kartaca.com</mysql.host>
+          <mysql.port>3306</mysql.port>
+          <mysql.schema>test_furkank_citest</mysql.schema>
+          <mysql.username>furkank</mysql.username>
+          <mysql.password>1234</mysql.password>
+    </properties>
 
 
-  <build>
-    <finalName>maven-multi-module-test</finalName>
+    <build>
+      <finalName>maven-multi-module-test</finalName>
 
-    <!-- Plugins start -->
-    <pluginManagement>
-      <plugins>
-	<plugin>
-              <groupId>org.liquibase</groupId>
-              <artifactId>liquibase-maven-plugin</artifactId>
-              <version>3.5.1</version>
-              <configuration>
-                  <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-                  <changeLogFile>${changelog}</changeLogFile>
-                  <driver>${mysql.driver}</driver>
-                  <url>jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}</url>
-                  <username>${mysql.username}</username>
-                  <password>${mysql.password}</password>
-		  <skipAssembly>true</skipAssembly>
-              </configuration>
-	      <inherited>false</inherited>
-              <!-- <executions>
-                  <execution>
-                      <phase>process-resources</phase>
-                      <configuration>
-                          <tag>${project.version}</tag>
-                      </configuration>
-                      <goals>
-                          <goal>update</goal> 
-                          <goal>tag</goal>
-                      </goals>
-                  </execution>
-              </executions> -->
-          </plugin>
-	
-      </plugins>
-    </pluginManagement>
-    <!-- Plugins end -->
+      <!-- Plugins start -->
+      <pluginManagement>
+        <plugins>
+  	<plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <changeLogFile>${changelog}</changeLogFile>
+                    <driver>${mysql.driver}</driver>
+                    <url>jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}</url>
+                    <username>${mysql.username}</username>
+                    <password>${mysql.password}</password>
+  		  <skipAssembly>true</skipAssembly>
+                </configuration>
+  	      <inherited>false</inherited>
+                <!-- <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <tag>${project.version}</tag>
+                        </configuration>
+                        <goals>
+                            <goal>update</goal> 
+                            <goal>tag</goal>
+                        </goals>
+                    </execution>
+                </executions> -->
+            </plugin>
+  	
+        </plugins>
+      </pluginManagement>
+      <!-- Plugins end -->
 
-  </build>
+    </build>
 </project>
