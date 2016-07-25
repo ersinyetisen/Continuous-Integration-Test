@@ -8,6 +8,7 @@
     <artifactId>maven-multi-module-test</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
+  <packaging>war</packaging>
   <artifactId>module1</artifactId>
 
   <dependencies>
