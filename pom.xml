@@ -114,11 +114,11 @@
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-  	<dependency>
+    <dependency>
   		<groupId>javax.servlet</groupId>
   		<artifactId>javax.servlet-api</artifactId>
   		<version>3.1.0</version>
-  	</dependency>
+    </dependency>
 
     <dependency>
   		<groupId>ch.qos.logback</groupId>
@@ -130,13 +130,13 @@
   				<groupId>org.slf4j</groupId>
   			</exclusion>
   		</exclusions>
-  	</dependency>
+    </dependency>
 
-  	<dependency>
+    <dependency>
   		<groupId>org.slf4j</groupId>
   		<artifactId>jcl-over-slf4j</artifactId>
   		<version>1.7.10</version>
-  	</dependency>
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
     <dependency>
@@ -159,7 +159,7 @@
       	<version>1.0.0.Beta</version>
   	</dependency>
     <!-- Liquibase dependency end -->
-    </dependencies>
+  </dependencies>
 
     <properties>
           <changelog>parent-liquibase/master.xml</changelog>
@@ -205,6 +205,19 @@
                     </execution>
                 </executions> -->
             </plugin>
+	    
+	    <!-- Tomcat plugin start -->
+	    <plugin>
+    		<groupId>org.apache.tomcat.maven</groupId>
+   		<artifactId>tomcat7-maven-plugin</artifactId>
+    		<version>2.0</version>
+    		<configuration>
+      			<url>http://188.166.23.135:8080/manager/text</url>
+      			<server>188.166.23.135</server>
+      			<path>/${project.build.finalName}</path>
+    		</configuration>
+	    </plugin>
+	    <!-- Tomcat plugin end -->
   	
         </plugins>
       </pluginManagement>
