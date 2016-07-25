@@ -1,7 +1,7 @@
 #CONTINUOUS INTEGRATION TEST
-#Maven multi module test project
 This project is for continuous integration tests.
 
+#Maven multi module test project
 Components:
 * Maven
 * Java web project
