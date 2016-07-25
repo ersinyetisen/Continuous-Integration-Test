@@ -4,20 +4,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Module1 | Login</title>
+    <title>Module1 | Welcome</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container" style="max-width:400px; margin-top:15%">
-      <form name="login" action="login" method="POST" class="form-signin">
-        <h2 class="form-signin-heading">Login</h2>
-        <input type="email" class="form-control" name="email" placeholder="E-mail address" required autofocus style="height:50px;">
-        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" style="height:50px;margin-bottom:5px;">
-        ${errorMsg} <br>
-        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Login">
-        <a href="register" class="btn centered">Click here if you are not registered</a>
-      </form>
+    <div class="container" style="max-width:400px; margin-top:20px">
+      <div class="row">
+        <div class="page-header center-block" style="max-width:500px">
+          <h1>Welcome to module 1</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="well center-block" style="max-width:500px">
+          <a href="login" class="btn btn-primary btn-lg btn-block">Login</a>
+          <a href="register" class="btn btn-default btn-lg btn-block">Register</a>
+          <a href="list" class="btn btn-default btn-lg btn-block">List users</a>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
