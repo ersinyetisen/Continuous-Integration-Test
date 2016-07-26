@@ -166,7 +166,7 @@
   </dependencies>
 
     <properties>
-          <changelog>parent-liquibase/master.xml</changelog>
+          <changelog>/src/main/resources/liquibase/changesets/master.xml</changelog>
           <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
           <mysql.host>localhost</mysql.host>
           <mysql.port>3306</mysql.port>
