@@ -164,10 +164,10 @@
     <properties>
           <changelog>parent-liquibase/master.xml</changelog>
           <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
-          <mysql.host>mysql.dev.kartaca.com</mysql.host>
+          <mysql.host>localhost</mysql.host>
           <mysql.port>3306</mysql.port>
-          <mysql.schema>test_furkank_citest</mysql.schema>
-          <mysql.username>furkank</mysql.username>
+          <mysql.schema>CI</mysql.schema>
+          <mysql.username>furkan</mysql.username>
           <mysql.password>1234</mysql.password>
     </properties>
 
