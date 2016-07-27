@@ -1,6 +1,5 @@
 package com.furkan;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -14,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 import com.furkan.hib.User;
 
@@ -32,17 +29,8 @@ public class ListUsers extends HttpServlet {
 		resp.getWriter().println("Data retrieven from the database:");
 		resp.getWriter().println("NAME\t\tSURNAME\t\tEMAIL\t\tPASSWORD");
 
-		String hibernatePropertyFilePath = "resources/hibernate.cfg.xml";
-		File hibernatePropertyFile = new File(hibernatePropertyFilePath);
 
-		Configuration configuration = new Configuration();
-		configuration.configure(hibernatePropertyFile);
-
-		StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder()
-				.applySettings(configuration.getProperties());
-		ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
-
-		factory = configuration.buildSessionFactory(serviceRegistry);
+		factory = new Configuration().configure("/java/com/furkan/hib/hibernate.cfg.xml").buildSessionFactory();
 		session = factory.openSession();
 		Transaction tx = null;
 
