@@ -30,7 +30,7 @@ public class ListUsers extends HttpServlet {
 		resp.getWriter().println("NAME\t\tSURNAME\t\tEMAIL\t\tPASSWORD");
 
 
-		factory = new Configuration().configure("/java/com/furkan/hib/hibernate.cfg.xml").buildSessionFactory();
+		factory = new Configuration().configure().buildSessionFactory();
 		session = factory.openSession();
 		Transaction tx = null;
 
