@@ -14,7 +14,7 @@
     <div class="container" style="max-width:400px; margin-top:15%">
       <form name="login" action="login" method="POST" class="form-signin">
         <h2 class="form-signin-heading">Login</h2>
-        <input type="email" class="form-control" name="email" placeholder="E-mail address" required autofocus style="height:50px;">
+        <input type="text" class="form-control" name="email" placeholder="E-mail address" required autofocus style="height:50px;">
         <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" style="height:50px;">
         ${errorMsg} <br>
         <input type="submit" class="btn btn-primary btn-lg btn-block" value="Login">
