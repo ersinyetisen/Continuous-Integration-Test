@@ -29,7 +29,7 @@ public class ListUsers extends HttpServlet {
 		resp.getWriter().println("Data retrieven from the database:");
 		resp.getWriter().println("NAME\t\tSURNAME\t\tEMAIL\t\tPASSWORD");
 
-		factory = new Configuration().configure("/main/resources/hibernate.cfg.xml").buildSessionFactory();
+		factory = new Configuration().configure("/resources/hibernate.cfg.xml").buildSessionFactory();
 		session = factory.openSession();
 		Transaction tx = null;
 
