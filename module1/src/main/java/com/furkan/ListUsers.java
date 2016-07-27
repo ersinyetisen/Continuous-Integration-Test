@@ -42,7 +42,7 @@ public class ListUsers extends HttpServlet {
 				.applySettings(configuration.getProperties());
 		ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
 
-		SessionFactory factory = configuration.buildSessionFactory(serviceRegistry);
+		factory = configuration.buildSessionFactory(serviceRegistry);
 		session = factory.openSession();
 		Transaction tx = null;
 
