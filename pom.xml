@@ -115,27 +115,27 @@
 
     <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
     <dependency>
-  		<groupId>javax.servlet</groupId>
-  		<artifactId>javax.servlet-api</artifactId>
-  		<version>3.1.0</version>
+  	<groupId>javax.servlet</groupId>
+  	<artifactId>javax.servlet-api</artifactId>
+	<version>3.1.0</version>
     </dependency>
 
     <dependency>
-  		<groupId>ch.qos.logback</groupId>
-  		<artifactId>logback-classic</artifactId>
-  		<version>1.1.2</version>
-  		<exclusions>
-  			<exclusion>
-  				<artifactId>slf4j-api</artifactId>
-  				<groupId>org.slf4j</groupId>
-  			</exclusion>
-  		</exclusions>
+	<groupId>ch.qos.logback</groupId>
+	<artifactId>logback-classic</artifactId>
+	<version>1.1.2</version>
+	<exclusions>
+		<exclusion>
+			<artifactId>slf4j-api</artifactId>
+			<groupId>org.slf4j</groupId>
+		</exclusion>
+	</exclusions>
     </dependency>
 
     <dependency>
-  		<groupId>org.slf4j</groupId>
-  		<artifactId>jcl-over-slf4j</artifactId>
-  		<version>1.7.10</version>
+	<groupId>org.slf4j</groupId>
+	<artifactId>jcl-over-slf4j</artifactId>
+	<version>1.7.10</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
@@ -161,40 +161,7 @@
     <!-- Liquibase dependency end -->
   </dependencies>
 
-    <properties>
-          <changelog>parent-liquibase/master.xml</changelog>
-          <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
-          <mysql.host>localhost</mysql.host>
-          <mysql.port>3306</mysql.port>
-          <mysql.schema>CI</mysql.schema>
-          <mysql.username>furkan</mysql.username>
-          <mysql.password>1234</mysql.password>
-    </properties>
-
-
     <build>
       <finalName>maven-multi-module-test</finalName>
-
-      <!-- Plugins start -->
-      <pluginManagement>
-        <plugins>
-  	<plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-                    <changeLogFile>${changelog}</changeLogFile>
-                    <driver>${mysql.driver}</driver>
-                    <url>jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}</url>
-                    <username>${mysql.username}</username>
-                    <password>${mysql.password}</password>
-  		  <skipAssembly>true</skipAssembly>
-                </configuration>
-  	      <inherited>false</inherited>
-            </plugin>
-        </plugins>
-      </pluginManagement>
-      <!-- Plugins end -->
     </build>
 </project>
