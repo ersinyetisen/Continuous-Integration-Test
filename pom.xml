@@ -150,5 +150,18 @@
 
     <build>
         <finalName>Continuous Integration Test Project</finalName>
+
+        <!-- Plugins start -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-maven-plugin</artifactId>
+                    <version>3.5.1</version>
+                    <inherited>false</inherited>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <!-- Plugins end -->    
     </build>
 </project>
