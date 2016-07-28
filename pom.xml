@@ -145,20 +145,6 @@
       <version>1.7.21</version>
     </dependency>
 
-    <!-- Liquibase dependency start -->
-    <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
-    <dependency>
-        <groupId>org.liquibase</groupId>
-        <artifactId>liquibase-core</artifactId>
-        <version>3.5.1</version>
-    </dependency>
-
-  	<dependency>
-      	<groupId>com.github.jean-merelis</groupId>
-      	<artifactId>liquibase-hibernate5</artifactId>
-      	<version>1.0.0.Beta</version>
-  	</dependency>
-    <!-- Liquibase dependency end -->
   </dependencies>
 
     <build>
