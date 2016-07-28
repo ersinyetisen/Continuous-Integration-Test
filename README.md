@@ -18,6 +18,7 @@ This project is integrated with bamboo.
 
 Access panel:
 * [Bamboo](http://188.166.23.135:8085)
+username: kartaca password: kartaca
 
 #Documentation
 ###Getting started
@@ -30,7 +31,8 @@ $ mvn archetype:generate -DgroupId={project-packaging}
 
 // example
 $ mvn archetype:generate -DgroupId=com.furkan
-    -DartifactId=MavenJavaWebProjectTest -DarchetypeArtifactId=maven-archetype-webapp
+    -DartifactId=MavenJavaWebProjectTest
+    -DarchetypeArtifactId=maven-archetype-webapp
     -DinteractiveMode=false
 ```
 The created project structure should look like this:
@@ -50,7 +52,7 @@ MavenJavaWebProjectTest/
                 └── web.xml
 
 ```
-Create manually the missing folders or files if doesn't exist.
+Create manually missing folders or files if doesn't exist.
 
 Now look at the *pom.xml* and add all the needed dependencies. From this point you can continue to creating your project files (*.java* and/or *.jsp* etc. files).
 
@@ -102,10 +104,10 @@ $ mvn liquibase:diff
 ```
 
 If we want to add another table,
-  1) Create another changelog xml file,
-  2) Put it in the correct directory,
-  3) Create master changelog file,
-  4) In master file include other changelog files.
+  1. Create another changelog xml file,
+  2. Put it in the correct directory,
+  3. Create master changelog file,
+  4. In master file include other changelog files.
 
 Sample master changelog file(master.xml):
 ```xml
@@ -126,21 +128,21 @@ Many database refactorings can automatically create rollback statements(*create 
 Simple rollback command example:
 ```xml
 <changeSet author="fkarakoyunlu" id="1">
-<sql dbms="mysql"
-        endDelimiter="\nGO"
-        splitStatements="true"
-        stripComments="true">insert into User (id, email, name, password, surname) values ('99', 'test@t.com', 'furkan', 'password', 'karakoyunlu')
-        <comment>I created a test user with the id 99</comment>
-</sql>
-<rollback>
-      delete from User where id='99'
+  <sql dbms="mysql"
+          endDelimiter="\nGO"
+          splitStatements="true"
+          stripComments="true">insert into User (id, email, name, password, surname) values ('99', 'test@t.com', 'furkan', 'password', 'karakoyunlu')
+          <comment>I created a test user with the id 99</comment>
+  </sql>
+  <rollback>
+        delete from User where id='99'
   </rollback>
 </changeSet>
 ```
 To perform a rollback there are 9 options, some of them are:
-  * rollback <tag>
-  * rollback <value>
-  * rollbackToDate <date/time>
+  * rollback `<tag>`
+  * rollback `<value>`
+  * rollbackToDate `<date/time>`
 
 For further information click [here.](http://www.liquibase.org/documentation/command_line.html)
 
@@ -177,10 +179,10 @@ There was a bug with the MySQL dependency version. To solve I downgraded the dep
 The reason is liquibase-hibernate4 dependency. It is not compatible with Hibernate ORM 5.0.1. I found a github repo that compatible with Hibernate5 and problem solved.
 
 #####Bamboo installation problem
-When I started *start-bamboo.sh* nothing happens. Make sure your server has more than 1.5GB of RAM. If you are using virtual server you can use swap partition to increase your virtual machine's RAM.
+When I started *start-bamboo.sh* nothing happens. Make sure your server has more than 1.5GB of RAM. If you are using virtual server you can use swap partition to increase your virtual machine's RAM. [Here is a tutorial](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04) for creating a swap file.
 
 #####Maven couldn't find the .war files
-Give your .war path to Tomcat Deploy Application from Bamboo in WAR File field. Example: *../<JOB TITLE>/<project-name>/target/<war-file>.war*
+Give your .war path to Tomcat Deploy Application from Bamboo in WAR File field. Example: `../<JOB TITLE>/<project-name>/target/<war-file>.war`
 
 #####Tomcat 403 Error
 Make sure your *tomcat-users.xml* looks like this:
@@ -199,7 +201,7 @@ Make sure your *tomcat-users.xml* looks like this:
 Make sure your project folder structure is correct.
 
 #####Unsupported major.minor version 52.0
-Make sure your compile version is not higher than run time version. Since bamboo needs Java 1.8 your tomcat must use the same Java version. Go to */etc/default* and open up the *tomcat7* file and in this file find JAVA_HOME, uncomment this line and give the correct java 1.8 path.
+Make sure your Java compile version is not higher than the Java run time version. Since bamboo needs Java 1.8 your tomcat must use the same Java version. Go to */etc/default* and open up the *tomcat7* file and in this file find JAVA_HOME, uncomment this line and give the correct java 1.8 path.
 
 #####hibernate.cfg.xml not found
 Make sure your hibernate.cfg.xml is placed under the resources folder.
