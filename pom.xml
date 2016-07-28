@@ -196,6 +196,7 @@
                     </configuration>
                     <inherited>false</inherited>
                 </plugin>
+	    </plugins>
         </pluginManagement>
         <!-- Plugins end -->
     </build>
