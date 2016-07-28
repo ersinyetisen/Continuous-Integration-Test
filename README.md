@@ -208,4 +208,9 @@ Make sure your Java compile version is not higher than the Java run time version
 Make sure your hibernate.cfg.xml is placed under the resources folder.
 
 ##Screenshots
+![Image of plan configuration](https://github.com/spootrick/Continuous-Integration-Test/blob/master/screenshots/1.png)
+![Image of tasks](https://github.com/spootrick/Continuous-Integration-Test/blob/master/screenshots/2.png)
+![Image of deploy tasks](https://github.com/spootrick/Continuous-Integration-Test/blob/master/screenshots/3.png)
+![Image of maven clean configuration](https://github.com/spootrick/Continuous-Integration-Test/blob/master/screenshots/4.png)
+![Image of tomcat deploy configuration](https://github.com/spootrick/Continuous-Integration-Test/blob/master/screenshots/5.png)
 
