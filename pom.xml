@@ -148,6 +148,16 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <changelog>parent-liquibase/master.xml</changelog>
+        <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
+        <mysql.host>localhost</mysql.host>
+        <mysql.port>3306</mysql.port>
+        <mysql.schema>CI</mysql.schema>
+        <mysql.username>furkan</mysql.username>
+        <mysql.password>1234</mysql.password>
+    </properties>
+
     <build>
         <finalName>Continuous Integration Test Project</finalName>
 
@@ -159,7 +169,13 @@
                     <artifactId>liquibase-maven-plugin</artifactId>
                     <version>3.5.1</version>
                     <configuration>
-                        <skip>true</skip>
+                        <skip>true</skip> <!-- to skip to plugin -->
+                        <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                        <changeLogFile>${changelog}</changeLogFile>
+                        <driver>${mysql.driver}</driver>
+                        <url>jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}</url>
+                        <username>${mysql.username}</username>
+                        <password>${mysql.password}</password>
                     </configuration>
                     <inherited>false</inherited>
                 </plugin>
