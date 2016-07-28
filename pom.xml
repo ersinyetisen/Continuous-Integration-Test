@@ -192,35 +192,9 @@
   		  <skipAssembly>true</skipAssembly>
                 </configuration>
   	      <inherited>false</inherited>
-                <!-- <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <configuration>
-                            <tag>${project.version}</tag>
-                        </configuration>
-                        <goals>
-                            <goal>update</goal> 
-                            <goal>tag</goal>
-                        </goals>
-                    </execution>
-                </executions> -->
             </plugin>
-	    
-	    <!-- Tomcat plugin start -->
-	    <!-- <plugin>
-    		<groupId>org.apache.tomcat.maven</groupId>
-   		<artifactId>tomcat7-maven-plugin</artifactId>
-    		<version>2.0</version>
-    		<configuration>
-      			<url>http://188.166.23.135:8080/manager/text</url>
-      			<server>188.166.23.135</server>
-      			<path>/${project.build.finalName}</path>
-    		</configuration>
-	    </plugin> -->
-	    <!-- Tomcat plugin end -->
         </plugins>
       </pluginManagement>
       <!-- Plugins end -->
-
     </build>
 </project>
