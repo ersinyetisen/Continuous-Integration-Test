@@ -5,7 +5,7 @@ This project is for continuous integration tests.
 Components:
 * Maven
 * Java web project
-* Hibernate db 
+* Hibernate db
 * Liquibase db
 * MySQL
 * Bamboo
@@ -18,4 +18,3 @@ This project is integrated with bamboo.
 
 Access panel:
 * [Bamboo](http://188.166.23.135:8085)
-

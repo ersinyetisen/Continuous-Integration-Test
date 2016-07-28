@@ -28,16 +28,17 @@ public class ListUsers extends HttpServlet {
 		resp.getWriter().println("Data retrieven from the database:");
 		resp.getWriter().println("NAME\t\tSURNAME\t\tEMAIL\t\tPASSWORD");
 
-
-		//creating session factory from HibernateUtility.java
+		// creating session factory from HibernateUtility.java
 		session = HibernateUtility.getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
+			// beginning transaction
 			tx = session.beginTransaction();
-			List users = session.createQuery("From User").list();
+			List users = session.createQuery("From User").list(); // table name: User
 			for (Iterator iterator = users.iterator(); iterator.hasNext();) {
 				User user = (User) iterator.next();
+				// getting all the user data
 				resp.getWriter().println(user.getName() + "\t\t" + user.getSurname() + "\t\t" + user.getEmail() + "\t\t"
 						+ user.getPassword());
 			}
@@ -45,9 +46,9 @@ public class ListUsers extends HttpServlet {
 		} catch (Exception e) {
 			if (tx != null) {
 				try {
+					// if transaction is failed then perform rollback
 					tx.rollback();
 				} catch (IllegalStateException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

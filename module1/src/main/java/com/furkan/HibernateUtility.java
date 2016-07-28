@@ -13,6 +13,10 @@ public class HibernateUtility {
 	private HibernateUtility() {
 	}
 
+	/**
+	* This method is synchronized because in case of two threads calls this class
+	* at the same time, then there is a chance of creating two SessionFactory objects.
+	*/
 	public static synchronized SessionFactory getSessionFactory() {
 		if (factory == null) {
 			factory = new Configuration().configure().buildSessionFactory();

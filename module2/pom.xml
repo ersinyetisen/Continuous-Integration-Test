@@ -1,5 +1,5 @@
-<project 
-  xmlns="http://maven.apache.org/POM/4.0.0" 
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -168,15 +168,15 @@
 
   </dependencies>
 
-    <properties>
-          <changelog>/src/main/resources/liquibase/changesets/master.xml</changelog>
-          <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
-          <mysql.host>localhost</mysql.host>
-          <mysql.port>3306</mysql.port>
-          <mysql.schema>CI</mysql.schema>
-          <mysql.username>furkan</mysql.username>
-          <mysql.password>1234</mysql.password>
-    </properties>
+  <properties>
+        <changelog>/src/main/resources/liquibase/changesets/master.xml</changelog>
+        <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
+        <mysql.host>localhost</mysql.host>
+        <mysql.port>3306</mysql.port>
+        <mysql.schema>CI</mysql.schema>
+        <mysql.username>furkan</mysql.username>
+        <mysql.password>1234</mysql.password>
+  </properties>
 
   <build>
     <finalName>maven-multi-module-test</finalName>
@@ -208,7 +208,7 @@
                   </execution>
               </executions>
           </plugin>
-	  
+
           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
