@@ -20,7 +20,6 @@ import com.furkan.hib.User;
 @WebServlet(urlPatterns = "/list")
 public class ListUsers extends HttpServlet {
 
-	private SessionFactory factory;
 	private Session session;
 
 	@Override
@@ -30,8 +29,8 @@ public class ListUsers extends HttpServlet {
 		resp.getWriter().println("NAME\t\tSURNAME\t\tEMAIL\t\tPASSWORD");
 
 
-		factory = new Configuration().configure().buildSessionFactory();
-		session = factory.openSession();
+		//creating session factory from HibernateUtility.java
+		session = HibernateUtility.getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
