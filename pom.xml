@@ -207,7 +207,7 @@
             </plugin>
 	    
 	    <!-- Tomcat plugin start -->
-	    <plugin>
+	    <!-- <plugin>
     		<groupId>org.apache.tomcat.maven</groupId>
    		<artifactId>tomcat7-maven-plugin</artifactId>
     		<version>2.0</version>
@@ -216,20 +216,8 @@
       			<server>188.166.23.135</server>
       			<path>/${project.build.finalName}</path>
     		</configuration>
-	    </plugin>
+	    </plugin> -->
 	    <!-- Tomcat plugin end -->
-
-	    <!-- Maven compiler plugin start -->
- 	    <!-- <plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-compiler-plugin</artifactId>
-		<version>3.5.1</version>
-		<configuration>
-			<source>1.8.0</source>
-			<target>1.8.0</target> 
-		</configuration>
-	   </plugin> --> 
-  	   <!-- Maven compiler plugin end -->
         </plugins>
       </pluginManagement>
       <!-- Plugins end -->
