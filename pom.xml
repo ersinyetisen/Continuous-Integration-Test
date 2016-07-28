@@ -8,6 +8,7 @@
     <name>Continuous Integration Test Project</name>
     <url>http://maven.apache.org</url>
 
+    <!-- Project modules -->
     <modules>
         <module>module1</module>
         <module>module2</module>
@@ -34,8 +35,8 @@
             <artifactId>hibernate-commons-annotations</artifactId>
             <version>5.0.1.Final</version>
         </dependency>
-        
-	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -106,9 +107,9 @@
             <artifactId>jta</artifactId>
             <version>1.1</version>
         </dependency>
-	<!-- Hibernate dependency end -->	
+        <!-- Hibernate dependency end -->
 
-	<!-- mysql dependency -->
+        <!-- mysql dependency -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -121,6 +122,8 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
         </dependency>
+
+        <!-- ch.qos.logback dependency -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -133,7 +136,7 @@
             </exclusions>
         </dependency>
 
-	<!-- slf4j dependency -->
+        <!-- slf4j dependency -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
@@ -146,6 +149,21 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.21</version>
         </dependency>
+
+        <!-- Liquibase dependency start -->
+        <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.jean-merelis</groupId>
+            <artifactId>liquibase-hibernate5</artifactId>
+            <version>1.0.0.Beta</version>
+        </dependency>
+        <!-- Liquibase dependency end -->
     </dependencies>
 
     <properties>
@@ -175,11 +193,12 @@
                         <url>jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.schema}</url>
                         <username>${mysql.username}</username>
                         <password>${mysql.password}</password>
+                        <skipAssembly>true</skipAssembly>
                     </configuration>
                     <inherited>false</inherited>
                 </plugin>
-            </plugins>
         </pluginManagement>
-        <!-- Plugins end -->    
+        <!-- Plugins end -->
     </build>
 </project>
+
