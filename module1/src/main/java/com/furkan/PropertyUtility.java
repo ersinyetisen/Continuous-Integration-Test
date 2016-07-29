@@ -24,8 +24,8 @@ public class PropertyUtility {
 			}
 
 			// getting the property values from the properties file
-			String user = properties.getProperty("user");
-			String workingOn = properties.getProperty("working-on");
+			String user = properties.getProperty("bamboo.inject.user");
+			String workingOn = properties.getProperty("bamboo.inject.working-on");
 
 			result = "User: " + user + " is currently working on " + workingOn;
 		} catch (Exception e) {
