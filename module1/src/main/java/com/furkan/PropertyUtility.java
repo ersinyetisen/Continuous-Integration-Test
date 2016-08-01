@@ -25,7 +25,7 @@ public class PropertyUtility {
 
 			// getting the property values from the properties file
 			String user = properties.getProperty("admin");
-			String passoword = properties.getProperty("passwd");
+			String password = properties.getProperty("passwd");
 
 			result = "User: " + user + " password " + password;
 		} catch (Exception e) {
