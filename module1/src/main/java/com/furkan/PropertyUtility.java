@@ -24,10 +24,10 @@ public class PropertyUtility {
 			}
 
 			// getting the property values from the properties file
-			String user = properties.getProperty("bamboo.inject.user");
-			String workingOn = properties.getProperty("bamboo.inject.working-on");
+			String user = properties.getProperty("admin");
+			String passoword = properties.getProperty("passwd");
 
-			result = "User: " + user + " is currently working on " + workingOn;
+			result = "User: " + user + " password " + password;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
