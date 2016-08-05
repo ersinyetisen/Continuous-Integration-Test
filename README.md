@@ -320,7 +320,7 @@ apache: apache2
 git: git-core
 {% endif %}
 ```
-You can learn more about salt from ![here](https://docs.saltstack.com/en/getstarted/fundamentals/) and ![here](https://docs.saltstack.com/en/getstarted/config/)
+You can learn more about salt from [here](https://docs.saltstack.com/en/getstarted/fundamentals/) and [here](https://docs.saltstack.com/en/getstarted/config/)
 
 #####My Approach to Configure Properties Files on Specific Stages on Bamboo:
 I created two seperate files `admin.properties` and `test.properties` for two bamboo stages. Then I created two `.sls` file to modify config files with salt.
