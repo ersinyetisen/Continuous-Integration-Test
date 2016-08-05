@@ -182,7 +182,7 @@ $ sudo apt-get update
 $ sudo apt-get install salt-master salt-minion salt-ssh salt-cloud salt-doc
 ```
 
-######Modifying master configuration:
+#####Modifying master configuration:
 Create the salt directory structures:
 ```
 $ sudo mkdir -p /srv/{salt,pillar}
@@ -207,7 +207,7 @@ pillar_roots:
     - /srv/pillar
 ```
 
-######Modifying minion configuration:
+#####Modifying minion configuration:
 ```
 $ sudo vi /etc/salt/minion
 ```
@@ -222,7 +222,7 @@ $ sudo restart salt-master
 $ sudo restart salt-minion
 ```
 
-######Accept the minion key:
+#####Accept the minion key:
 Salt minion automatically connects with restarting. We need to verify and accept the minions key to allow comunication with master.
 
 List all the keys that our master has knowledge about:
