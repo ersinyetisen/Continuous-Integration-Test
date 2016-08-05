@@ -9,6 +9,7 @@ Components:
 * Liquibase db
 * MySQL
 * Bamboo
+* Salt stack
 
 Live demo:
 * [Module 1](http://188.166.23.135:8080/module1/)
@@ -168,6 +169,226 @@ Create new project plan. Initially it comes with source code checkout task. Conf
 Then create necessary maven tasks (such as *maven clean*, *maven install*) in the same stage.
 
 After you completed previous tasks create another stage for deployment. Create a *Deploy Tomcat Application* task. Fill the necessary fields and save it.
+
+
+####Salt Stack:
+Salt is python based open source configuration management software and remote execution engine. It uses master and minion terms. You can think master as an orchestra chef and minions as musicians.
+
+#####Installation:
+It depends on your operating system. This instructions for Ubuntu 14.04:
+```
+$ sudo add-apt-repository ppa:saltstack/salt
+$ sudo apt-get update
+$ sudo apt-get install salt-master salt-minion salt-ssh salt-cloud salt-doc
+```
+
+######Modifying master configuration:
+Create the salt directory structures:
+```
+$ sudo mkdir -p /srv/{salt,pillar}
+```
+Modify the master configuration:
+```
+$ sudo vi /etc/salt/master
+```
+add or uncomment (and configure) these lines:
+```
+file_roots:
+  base:
+    - /srv/salt
+    - /srv/formulas
+```
+(NOTE: Be careful about the spacings and indentations)
+
+Next thing is, setting up the root directory for pillar configuration. On the same file uncomment or add the following lines:
+```
+pillar_roots:
+  base:
+    - /srv/pillar
+```
+
+######Modifying minion configuration:
+```
+$ sudo vi /etc/salt/minion
+```
+Just add or uncomment the
+```
+master: 127.0.0.1
+# same machine is both master and minion in my case
+```
+Save the file and restart the master and minion processes.
+```
+$ sudo restart salt-master
+$ sudo restart salt-minion
+```
+
+######Accept the minion key:
+Salt minion automatically connects with restarting. We need to verify and accept the minions key to allow comunication with master.
+
+List all the keys that our master has knowledge about:
+```
+$ sudo salt-key --list-all
+```
+This command will produce an output like this:
+```
+Accepted Keys:
+Denied Keys:
+Unaccepted Keys:
+alpha
+Rejected Keys:
+```
+(Note: alpha is the hostname of my server)
+
+We need to accept the minion
+```
+$ sudo salt-key -a alpha
+```
+Then if we type again listing command, it will show the alpha as accepted,
+```
+$ sudo salt-key --list-all
+```
+```
+Accepted Keys:
+alpha
+Denied Keys:
+Unaccepted Keys:
+Rejected Keys:
+```
+Now we can test master and minion comunication by typing this line:
+```
+$ sudo salt '*' test.ping
+```
+(In this command `'*'` means all the minions if you want to ping specific minion, then just type the minion name. `$ sudo salt 'alpha' test.ping`)
+
+It will produce:
+```
+alpha:
+    True
+```
+We installed and configured salt master and minion on the same machine. If you want to add seperate minion repeat the Modifying minion configuraiton process.
+
+Salt folder structrue should be like this:
+```
+/srv
+├── pillar
+└── salt
+```
+
+#####Some commands about salt:
+Let's say we want to install new programs on our servers. We can complete this process in less than five minutes with salt.
+
+Under salt master folder(`/srv/salt`) create a file named `test.sls`:
+```
+install apache php5 php5-mysql:
+  pkg:
+    - installed
+    - pkgs:
+      - apache2
+      - php5
+      - php5-mysql
+```
+Then type the following command to the console:
+```
+$ sudo salt '*' state.sls test
+```
+Salt will install apache, php5 and php5-mysql to all minion servers.
+
+Or let's say we want to create a directoy on our servers. Just create a `cdir.sls` under `/srv/salt/`
+```
+create directory on servers:
+  file.directory:
+    - name: /opt/testDir
+    - user: root
+    - group: root
+    - mode: 755
+```
+Then type:
+```
+$ sudo salt '*' state.apply cdir
+```
+
+#####Jinja
+Salt uses jinja templating engine. It can be used in salt state files, salt pillar files and other files managed by salt.
+
+Simple os based package name:
+```
+{% if grains['os_family'] == 'RedHat' %}
+apache: httpd
+git: git
+{% elif grains['os_family'] == 'Debian' %}
+apache: apache2
+git: git-core
+{% endif %}
+```
+You can learn more about salt from ![here](https://docs.saltstack.com/en/getstarted/fundamentals/) and ![here](https://docs.saltstack.com/en/getstarted/config/)
+
+#####My Approach to Configure Properties Files on Specific Stages on Bamboo:
+I created two seperate files `admin.properties` and `test.properties` for two bamboo stages. Then I created two `.sls` file to modify config files with salt.
+
+```
+/srv
+├── pillar
+└── salt
+    ├── adminConfig.sls
+    ├── configs
+    │   ├── admin.properties
+    │   └── test.properties
+    └── testConfig.sls
+
+```
+
+`adminConfig.sls`:
+```
+admin config properties:
+  file.managed:
+    - name: /home/spootrick/config/config.properties
+    - source: salt://configs/admin.properties
+    - user: root
+    - group: root
+    - mode: 744
+```
+
+`testConfig.sls`:
+```
+test config properties:
+  file.managed:
+    - name: /home/spootrick/config/config.properties
+    - source: salt://configs/test.properties
+    - user: root
+    - group: root
+    - mode: 744
+```
+
+`admin.properties`:
+```
+user=admin
+password=1234
+
+liquibaseDirectoryM1=/module1/src/main/resources/liquibase/changesets
+liquibaseDirectoryM2=/module2/src/main/resources/liquibase/changesets
+```
+
+`test.properties`:
+```
+user=test
+password=test
+
+liquibaseTestingDirectoryM1=/module1/src/main/resources/test/liquibase/changesets
+liquibaseTestingDirectoryM2=/module2/src/main/resources/test/liquibase/changesets
+```
+
+In bamboo plan on default stage I created a script task under maven install task and in script body I wrote;
+```
+echo 'salt user password' | sudo -S salt '*' state.apply adminConfig
+```
+(Since I couldn't find a way to run salt commands without sudo I'm giving the salt user password on the command line)
+
+On test stage I wrote the following line in the script body:
+```
+echo 'salt user password' | sudo -S salt '*' state.apply testConfig
+```
+
+If you have more stages and more config files, repeat the steps as many as needed.
 
 
 ##Bug fix
